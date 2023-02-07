@@ -22,8 +22,7 @@ def download(vid_id):
     if request.method == 'GET':
         return render_template('download.html', title = video.title, thumbnail = video.thumbnail_url,
                                 resolutions = video.GetAvailableResolutions())
-
     return send_file(
-        BytesIO(video.StreamToBuffer()),
+        BytesIO(video.StreamToBuffer(request.form['SelectedResolution'])),
         as_attachment = True,
         download_name=f'{video.title}.mp4')

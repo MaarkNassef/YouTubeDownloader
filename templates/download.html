@@ -8,7 +8,7 @@
         <select class="form-select" name="SelectedResolution">
             <option selected>Choose resolution...</option>
             {% for res in resolutions: %}
-            <option value="{{res}}">{{res}}</option>
+            <option value="{{res}}">{{res}}: Size = {{resolutions[res]}}MB</option>
             {% endfor %}
         </select>
         <button class="btn btn-outline-secondary" type="submit">Download</button>

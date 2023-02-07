@@ -16,12 +16,16 @@ class VideoDownloader:
         buffer.seek(0)
         return buffer.read()
 
-    def GetAvailableResolutions(self) -> list:
+    def GetAvailableResolutions(self) -> dict:
         res = set()
+        result = {}
         for i in self.streams.filter(file_extension='mp4'):
             if i.resolution:
                 res.add(i.resolution)
-        return sorted(list(res))
+        for i in sorted(list(res)):
+            size = self.streams.filter(file_extension='mp4', res=i).first().filesize_mb
+            result[i] = float("{:.1f}".format(size))
+        return result        
 
 class PlaylistDownloader:
     def __init__(self, url) -> None:
