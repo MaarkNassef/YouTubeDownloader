@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+<ul class="nav nav-pills" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active" id="VideoDownloader-tab" data-bs-toggle="tab" data-bs-target="#VideoDownloader-tab-pane" type="button" role="tab" aria-controls="VideoDownloader-tab-pane" aria-selected="true">Video Downloader</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="PlaylistDownloader-tab" data-bs-toggle="tab" data-bs-target="#PlaylistDownloader-tab-pane" type="button" role="tab" aria-controls="PlaylistDownloader-tab-pane" aria-selected="false">Playlist Downloader</button>
+    </li>
+  </ul>
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="VideoDownloader-tab-pane" role="tabpanel" aria-labelledby="VideoDownloader-tab" tabindex="0">
+        <form method="post">
+            <div class="form-floating mb-3 mt-3">
+                <input type="text" class="form-control" id="VideoLinkInput" name = "VideoLinkInput" placeholder="https://www.youtube.com/watch?v=a8DM-tD9w2I">
+                <label for="VideoLinkInput" name = "VideoLinkInput">Video URL</label>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Proceed</button>
+            </div>
+        </form>
+    </div>
+    <div class="tab-pane fade" id="PlaylistDownloader-tab-pane" role="tabpanel" aria-labelledby="PlaylistDownloader-tab" tabindex="0">
+        <form method="post">
+            <div class="form-floating mb-3 mt-3">
+                <input type="text" class="form-control" id="PlaylistLinkInput" name="PlaylistLinkInput" placeholder="https://www.youtube.com/watch?v=a8DM-tD9w2I">
+                <label for="PlaylistLinkInput" name="PlaylistLinkInput">Playlist URL</label>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Proceed</button>
+            </div>
+        </form>
+    </div>
+  </div>
+{% endblock %}

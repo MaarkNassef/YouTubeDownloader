@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<h5 class="fs-5">Download:</h5>
+<p class="fs-6">{{title}}</p>
+<img src="{{thumbnail}}" class="rounded mx-auto d-block img-fluid" alt="..." width="400px">
+<form method="post">
+    <div class="input-group mt-3 w-50 mx-auto">
+        <select class="form-select" name="SelectedResolution">
+            <option selected>Choose resolution...</option>
+            {% for res in resolutions: %}
+            <option value="{{res}}">{{res}}</option>
+            {% endfor %}
+        </select>
+        <button class="btn btn-outline-secondary" type="submit">Download</button>
+    </div>
+</form>
+{% endblock %}
