@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<h4 class="fs-4">Download:</h4>
+<h5 class="fs-5">{{title}}</h5>
+{% for video in videos: %}
+<div class="card mt-3">
+    <div class="row g-0">
+        <div class="col-md-4">
+            <img class="img-fluid rounded-start" src="{{video.thumbnail_url}}" alt="...">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">{{video.title}}</h5>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+<form method="post">
+    <div class="text-center">
+        <button class="btn btn-outline-secondary mt-3" type="submit">Download All</button>
+    </div>
+</form>
+{% endblock %}
