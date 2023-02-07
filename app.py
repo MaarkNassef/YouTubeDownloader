@@ -65,7 +65,7 @@ def download_playlist(pl_id):
     with ZipFile(in_memory, 'w') as zip:
         # Add multiple files to the zip file
         for file in videos:
-            zip.writestr(f"""{file.title}.mp4""",BytesIO(file.StreamToBuffer()).getvalue())
+            zip.writestr(f"""{file.title}.mp4""",file.StreamToBuffer(request.form['SelectedResolution']))
 
     # Set the zip file as the response
     in_memory.seek(0)

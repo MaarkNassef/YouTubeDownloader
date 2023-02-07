@@ -9,7 +9,7 @@ class VideoDownloader:
         self.title = self.youtube.title
         self.thumbnail_url = self.youtube.thumbnail_url
     
-    def StreamToBuffer(self, resolution: str = '144p') -> bytes:
+    def StreamToBuffer(self, resolution: str = 'low') -> bytes:
         buffer = BytesIO()
         if resolution == 'high':
             self.youtube.streams.filter(file_extension='mp4').get_highest_resolution().stream_to_buffer(buffer)

@@ -1,7 +1,15 @@
 {% extends 'base.html' %}
 {% block content %}
-<h4 class="fs-4">Download:</h4>
-<h5 class="fs-5">{{title}}</h5>
+<h4 class="fs-4">Download: {{title}}</h4>
+<form method="post">
+    <div class="input-group mt-3 w-50 mx-auto">
+        <select class="form-select" name="SelectedResolution">
+            <option selected value="low">Lowest Resolution</option>
+            <option value="high">Highest Resolution</option>
+        </select>
+        <button class="btn btn-outline-secondary" type="submit">Download</button>
+    </div>
+</form>
 {% for video in videos: %}
 <div class="card mt-3">
     <div class="row g-0">
@@ -16,9 +24,4 @@
     </div>
 </div>
 {% endfor %}
-<form method="post">
-    <div class="text-center">
-        <button class="btn btn-outline-secondary mt-3" type="submit">Download All</button>
-    </div>
-</form>
 {% endblock %}
