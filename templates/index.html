@@ -1,5 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
+
+{% for message in get_flashed_messages(): %}
+<div class="alert alert-danger" role="alert">
+    {{message}}
+</div>
+{% endfor %}
+
 <ul class="nav nav-pills" id="myTab" role="tablist">
     <li class="nav-item" role="presentation">
       <button class="nav-link active" id="VideoDownloader-tab" data-bs-toggle="tab" data-bs-target="#VideoDownloader-tab-pane" type="button" role="tab" aria-controls="VideoDownloader-tab-pane" aria-selected="true">Video Downloader</button>
