@@ -43,6 +43,13 @@ def download_video(vid_id):
     if request.method == 'GET':
         return render_template('download_video.html', title = video.title, thumbnail = video.thumbnail_url,
                                 resolutions = video.GetAvailableResolutions())
+    
+    if request.form['SelectedResolution'] == 'audio':
+        return send_file(
+            BytesIO(video.StreamToBuffer(request.form['SelectedResolution'])),
+            as_attachment = True,
+            download_name=f"""{video.title}.mp3""")
+
     return send_file(
         BytesIO(video.StreamToBuffer(request.form['SelectedResolution'])),
         as_attachment = True,
@@ -65,7 +72,10 @@ def download_playlist(pl_id):
     with ZipFile(in_memory, 'w') as zip:
         # Add multiple files to the zip file
         for file in videos:
-            zip.writestr(f"""{file.title}.mp4""",file.StreamToBuffer(request.form['SelectedResolution']))
+            if request.form['SelectedResolution'] == 'audio':
+                zip.writestr(f"""{file.title}.mp3""",file.StreamToBuffer(request.form['SelectedResolution']))
+            else:
+                zip.writestr(f"""{file.title}.mp4""",file.StreamToBuffer(request.form['SelectedResolution']))
 
     # Set the zip file as the response
     in_memory.seek(0)

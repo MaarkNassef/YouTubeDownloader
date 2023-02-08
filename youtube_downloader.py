@@ -15,6 +15,8 @@ class VideoDownloader:
             self.youtube.streams.filter(file_extension='mp4').get_highest_resolution().stream_to_buffer(buffer)
         elif resolution == 'low':
             self.youtube.streams.filter(file_extension='mp4').get_lowest_resolution().stream_to_buffer(buffer)
+        elif resolution == 'audio':
+            self.youtube.streams.get_audio_only().stream_to_buffer(buffer)
         else:
             self.youtube.streams.filter(res=resolution, file_extension='mp4').first().stream_to_buffer(buffer)
         buffer.seek(0)
